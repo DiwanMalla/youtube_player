@@ -37,9 +37,7 @@ export default function FeaturedVideo({
               d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="text-lg font-medium">
-            Search for videos to get started
-          </p>
+          <p className="text-lg font-medium">Search for videos to get started</p>
         </div>
       </div>
     );
@@ -60,12 +58,8 @@ export default function FeaturedVideo({
 
       {/* Video Info */}
       <div className="space-y-3">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-          {video.title}
-        </h1>
-        <p className="text-gray-700 dark:text-gray-300 font-medium">
-          {video.channelTitle}
-        </p>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{video.title}</h1>
+        <p className="text-gray-700 dark:text-gray-300 font-medium">{video.channelTitle}</p>
         <div className="pt-4 border-t border-white/40 dark:border-gray-600/40">
           <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
             {video.description}

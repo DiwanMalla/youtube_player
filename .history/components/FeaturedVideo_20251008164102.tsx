@@ -2,6 +2,7 @@
 
 import { VideoDetails } from "@/types/youtube";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 interface FeaturedVideoProps {
   video: VideoDetails | null;
@@ -9,11 +10,69 @@ interface FeaturedVideoProps {
   onRecommendationClick?: (video: VideoDetails) => void;
 }
 
+// Extend Window interface to include YouTube IFrame API
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
+
 export default function FeaturedVideo({
   video,
   recommendations = [],
   onRecommendationClick,
 }: FeaturedVideoProps) {
+  const playerRef = useRef<any>(null);
+  const [showEndScreen, setShowEndScreen] = useState(false);
+
+  useEffect(() => {
+    // Load YouTube IFrame API
+    if (!window.YT) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+    }
+
+    // Initialize player when API is ready
+    window.onYouTubeIframeAPIReady = () => {
+      if (video && !playerRef.current) {
+        playerRef.current = new window.YT.Player('youtube-player', {
+          events: {
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      }
+    };
+
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy();
+        playerRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Reset end screen when video changes
+    setShowEndScreen(false);
+  }, [video?.id]);
+
+  const onPlayerStateChange = (event: any) => {
+    // YT.PlayerState.ENDED = 0
+    if (event.data === 0) {
+      setShowEndScreen(true);
+    } else if (event.data === 1) {
+      // Playing - hide end screen
+      setShowEndScreen(false);
+    }
+  };
+
+  const handleRecommendationClick = (rec: VideoDetails) => {
+    setShowEndScreen(false);
+    onRecommendationClick?.(rec);
+  };
   if (!video) {
     return (
       <div className="flex items-center justify-center h-[500px] bg-white/30 dark:bg-gray-800/40 backdrop-blur-md rounded-2xl border border-white/40 dark:border-gray-600/40">
@@ -37,9 +96,7 @@ export default function FeaturedVideo({
               d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="text-lg font-medium">
-            Search for videos to get started
-          </p>
+          <p className="text-lg font-medium">Search for videos to get started</p>
         </div>
       </div>
     );
@@ -60,12 +117,8 @@ export default function FeaturedVideo({
 
       {/* Video Info */}
       <div className="space-y-3">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-          {video.title}
-        </h1>
-        <p className="text-gray-700 dark:text-gray-300 font-medium">
-          {video.channelTitle}
-        </p>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{video.title}</h1>
+        <p className="text-gray-700 dark:text-gray-300 font-medium">{video.channelTitle}</p>
         <div className="pt-4 border-t border-white/40 dark:border-gray-600/40">
           <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
             {video.description}
