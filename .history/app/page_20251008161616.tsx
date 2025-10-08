@@ -68,16 +68,16 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-950">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900">
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/30 dark:bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200/30 dark:bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-pink-200/20 dark:bg-slate-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/30 dark:bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200/30 dark:bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-pink-200/20 dark:bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
       {/* Header */}
-      <header className="bg-white/40 dark:bg-gray-800/60 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 sticky top-0 z-50 shadow-lg shadow-gray-200/50 dark:shadow-black/50">
+      <header className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/20 sticky top-0 z-50 shadow-lg shadow-gray-200/50 dark:shadow-gray-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between mb-6">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Featured Video - Left Side (2 columns on large screens) */}
             <div className="lg:col-span-2">
-              <div className="bg-white/40 dark:bg-gray-800/50 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-black/50">
+              <div className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-gray-700/40 shadow-xl shadow-gray-200/50 dark:shadow-gray-900/50">
                 <FeaturedVideo 
                   video={selectedVideo} 
                   recommendations={recommendations}
@@ -142,7 +142,7 @@ export default function Home() {
 
             {/* Video List - Right Side (1 column on large screens) */}
             <div className="lg:col-span-1">
-              <div className="bg-white/40 dark:bg-gray-800/50 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-black/50">
+              <div className="bg-white/40 dark:bg-gray-900/40 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-gray-700/40 shadow-xl shadow-gray-200/50 dark:shadow-gray-900/50">
                 <VideoList 
                   videos={videos} 
                   onVideoSelect={handleVideoSelect}
@@ -155,7 +155,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative bg-white/40 dark:bg-gray-800/60 backdrop-blur-xl mt-12 border-t border-white/20 dark:border-gray-700/30 shadow-lg">
+      <footer className="relative bg-white/40 dark:bg-gray-900/40 backdrop-blur-xl mt-12 border-t border-white/20 dark:border-gray-700/20 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-center text-gray-700 dark:text-gray-300">
             Personal YouTube Web Player - Built with Next.js 15, Tailwind CSS, and YouTube Data API v3

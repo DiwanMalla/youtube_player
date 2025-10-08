@@ -131,7 +131,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Featured Video - Left Side (2 columns on large screens) */}
             <div className="lg:col-span-2">
-              <div className="bg-white/40 dark:bg-gray-800/50 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-black/50">
+              <div className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-purple-500/30 shadow-xl shadow-gray-200/50 dark:shadow-purple-900/50">
                 <FeaturedVideo 
                   video={selectedVideo} 
                   recommendations={recommendations}
@@ -142,7 +142,7 @@ export default function Home() {
 
             {/* Video List - Right Side (1 column on large screens) */}
             <div className="lg:col-span-1">
-              <div className="bg-white/40 dark:bg-gray-800/50 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-black/50">
+              <div className="bg-white/40 dark:bg-slate-800/40 backdrop-blur-xl rounded-3xl p-6 border border-white/40 dark:border-purple-500/30 shadow-xl shadow-gray-200/50 dark:shadow-purple-900/50">
                 <VideoList 
                   videos={videos} 
                   onVideoSelect={handleVideoSelect}
@@ -155,9 +155,9 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative bg-white/40 dark:bg-gray-800/60 backdrop-blur-xl mt-12 border-t border-white/20 dark:border-gray-700/30 shadow-lg">
+      <footer className="relative bg-white/40 dark:bg-slate-900/60 backdrop-blur-xl mt-12 border-t border-white/20 dark:border-purple-500/20 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-700 dark:text-gray-300">
+          <p className="text-center text-gray-700 dark:text-purple-200">
             Personal YouTube Web Player - Built with Next.js 15, Tailwind CSS, and YouTube Data API v3
           </p>
         </div>
